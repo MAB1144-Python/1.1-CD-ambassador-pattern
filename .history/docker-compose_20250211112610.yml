@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - main
+      - exp
+
+  main:
+    build: ./backend
+    container_name: main
+    command: ["main_server.py"]  # Corrección: Ejecuta el archivo correcto
+    volumes:
+      - ./backend:/app  # Asegura que los archivos sean accesibles
+
+  exp:
+    build: ./backend
+    container_name: exp
+    command: ["exp_server.py"]  # Corrección: Ejecuta el archivo correcto
+    volumes:
+      - ./backend:/app  # Asegura que los archivos sean accesibles

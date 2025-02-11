@@ -1,0 +1,9 @@
+FROM python:3.9
+WORKDIR /app
+
+# Copiar archivos individualmente para asegurar su presencia
+COPY main_server.py /app/main_server.py
+COPY exp_server.py /app/exp_server.py
+
+RUN pip install flask
+ENTRYPOINT ["python"]
